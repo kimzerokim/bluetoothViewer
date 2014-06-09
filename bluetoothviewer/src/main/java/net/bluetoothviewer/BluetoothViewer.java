@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2010 Janos Gyerik
+ * Copyright (C) 2010 Janos Gyerik,
+ * modified by YoungKim 2014
  *
  * This file is part of BluetoothViewer.
  *
@@ -116,7 +117,7 @@ public class BluetoothViewer extends Activity {
                     break;
                 case BluetoothViewerService.MSG_LINE_READ:
                     if (paused) break;
-                    String readMessage = (String)msg.obj;
+                    String readMessage = (String) msg.obj;
                     if (D) Log.d(TAG, readMessage);
                     mConversationArrayAdapter.add(readMessage);
                     break;
@@ -179,6 +180,10 @@ public class BluetoothViewer extends Activity {
         });
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
+        if (mBluetoothAdapter == null) {
+            Log.d(TAG, "device dose not support bluetooth");
+        }
     }
 
     private void startDeviceListActivity() {
@@ -208,10 +213,7 @@ public class BluetoothViewer extends Activity {
         mConversationArrayAdapter.add(getString(R.string.welcome_1));
         mConversationArrayAdapter.add(getString(R.string.welcome_2));
         mConversationArrayAdapter.add(getString(R.string.welcome_3));
-        mConversationArrayAdapter.add(getString(R.string.welcome_github_pre));
-        mConversationArrayAdapter.add(getString(R.string.welcome_github));
-        mConversationArrayAdapter.add(getString(R.string.welcome_please_rate));
-        mConversationArrayAdapter.add(getString(R.string.welcome_please_buy));
+        mConversationArrayAdapter.add(getString(R.string.welcome_4));
 
         // Initialize the compose field with a listener for the return key
         mOutEditText = (EditText) findViewById(R.id.edit_text_out);
@@ -236,11 +238,13 @@ public class BluetoothViewer extends Activity {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        //when stop activity
         if (mBluetoothService != null) mBluetoothService.stop();
     }
 
     private void sendMessage(CharSequence chars) {
         if (chars.length() > 0) {
+            //check bluetooth connect status
             if (mBluetoothService.getState() != BluetoothViewerService.STATE_CONNECTED) {
                 Toast.makeText(this, R.string.not_connected, Toast.LENGTH_SHORT).show();
                 return;
@@ -280,34 +284,6 @@ public class BluetoothViewer extends Activity {
                 }
                 setupUserInterface();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_github:
-                openURL(getString(R.string.url_github));
-                break;
-            case R.id.menu_rate:
-                openURL(getString(R.string.url_rate));
-                break;
-            case R.id.menu_buy:
-                openURL(getString(R.string.url_full_app));
-                break;
-        }
-        return false;
-    }
-
-    private void openURL(String url) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
     }
 
     private void disconnectDevices() {

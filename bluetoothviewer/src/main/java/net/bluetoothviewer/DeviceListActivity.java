@@ -78,10 +78,10 @@ public class DeviceListActivity extends Activity {
         ArrayAdapter<String> pairedDevicesAdapter = new ArrayAdapter<String>(this, R.layout.device_name);
         mNewDevicesArrayAdapter = new ArrayAdapter<String>(this, R.layout.device_name);
         mNewDevicesSet = new HashSet<String>();
-
-        ListView pairedListView = (ListView) findViewById(R.id.paired_devices);
-        pairedListView.setAdapter(pairedDevicesAdapter);
-        pairedListView.setOnItemClickListener(mDeviceClickListener);
+//
+//        ListView pairedListView = (ListView) findViewById(R.id.paired_devices);
+//        pairedListView.setAdapter(pairedDevicesAdapter);
+//        pairedListView.setOnItemClickListener(mDeviceClickListener);
 
         ListView newDevicesListView = (ListView) findViewById(R.id.new_devices);
         newDevicesListView.setAdapter(mNewDevicesArrayAdapter);
@@ -94,18 +94,18 @@ public class DeviceListActivity extends Activity {
         registerReceiver(mReceiver, filter);
 
         mBtAdapter = BluetoothAdapter.getDefaultAdapter();
-
-        Set<BluetoothDevice> pairedDevices = mBtAdapter.getBondedDevices();
-
-        if (pairedDevices != null && !pairedDevices.isEmpty()) {
-            findViewById(R.id.title_paired_devices).setVisibility(View.VISIBLE);
-            for (BluetoothDevice device : pairedDevices) {
-                pairedDevicesAdapter.add(device.getName() + "\n" + device.getAddress());
-            }
-        } else {
-            String noDevices = getResources().getText(R.string.none_paired).toString();
-            pairedDevicesAdapter.add(noDevices);
-        }
+//
+//        Set<BluetoothDevice> pairedDevices = mBtAdapter.getBondedDevices();
+//
+//        if (pairedDevices != null && !pairedDevices.isEmpty()) {
+//            findViewById(R.id.title_paired_devices).setVisibility(View.VISIBLE);
+//            for (BluetoothDevice device : pairedDevices) {
+//                pairedDevicesAdapter.add(device.getName() + "\n" + device.getAddress());
+//            }
+//        } else {
+//            String noDevices = getResources().getText(R.string.none_paired).toString();
+//            pairedDevicesAdapter.add(noDevices);
+//        }
     }
 
     @Override

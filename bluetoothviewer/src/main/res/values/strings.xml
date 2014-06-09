@@ -14,8 +14,7 @@
 -->
 
 <resources>
-    <string name="app_name">Bluetooth Viewer</string>
-    <string name="app_name_lite">Bluetooth Viewer (LITE)</string>
+    <string name="app_name_lite">블루투스 탐색하기</string>
 
     <!--  BluetoothViewer -->
     <string name="send">Send</string>
@@ -25,32 +24,20 @@
 
     <string name="btstatus_connecting_to_fmt">connecting to: %s</string>
     <string name="btstatus_connected_to_fmt">connected to: %s</string>
-    <string name="btstatus_not_connected">not connected</string>
+    <string name="btstatus_not_connected">연결 안됨</string>
 
     <!--  DeviceListActivity -->
-    <string name="scanning">Scanning for devices…</string>
-    <string name="select_device">Select a device to connect to</string>
-    <string name="none_paired">No paired devices</string>
-    <string name="none_found">No devices found</string>
-    <string name="title_paired_devices">Paired Devices</string>
-    <string name="title_other_devices">Other Available Devices</string>
-    <string name="button_scan">Scan for devices</string>
+    <string name="scanning">디바이스 찾는 중</string>
+    <string name="select_device">연결할 수 있는 디바이스 목록</string>
+    <string name="none_paired">연결된 디바이스 없음</string>
+    <string name="none_found">디바이스 발견되지 않음</string>
+    <string name="title_paired_devices">연결된 디바이스</string>
+    <string name="title_other_devices">현재 연결가능한 디바이스</string>
+    <string name="button_scan">디바이스 찾기</string>
 
-    <!-- Options Menu -->
-    <string name="menu_github">View source on GitHub</string>
-    <string name="menu_rate">Rate this app</string>
-    <string name="menu_buy">Buy the full app</string>
-
-    <string name="url_github">https://github.com/janosgyerik/bluetoothviewer</string>
-    <string name="url_rate">market://details?id=net.bluetoothviewer</string>
-    <string name="url_full_app">market://details?id=net.bluetoothviewer.full</string>
-
-    <string name="welcome_1">Welcome to Bluetooth Viewer!</string>
-    <string name="welcome_2">This app is a simple Bluetooth connection debugging tool.</string>
-    <string name="welcome_3">Connect to any Bluetooth device and see incoming raw data.</string>
-    <string name="welcome_github_pre">You can find the source code and report bugs on GitHub:</string>
-    <string name="welcome_github">https://github.com/janosgyerik/bluetoothviewer</string>
-    <string name="welcome_please_rate">If you like this app, please rate it.</string>
-    <string name="welcome_please_buy">To support the developer, please buy the full version.</string>
+    <string name="welcome_1">블루투스 뷰어를 (오픈소스를 참고하여) 만들었습니다.</string>
+    <string name="welcome_2">Bluetooth Low Energy는 4.3부터 지원합니다.</string>
+    <string name="welcome_3">하지만 가지고 있는 기기가 4.1.2밖에 없으므로 그냥 블루투스로.... </string>
+    <string name="welcome_4">김 민혁, 김 영이 작업함.</string>
 
 </resources>
